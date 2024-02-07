@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Rose Day</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -1;
+        }
+
+        h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .interlinked-button {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .interlinked-button a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .interlinked-button a:hover {
+            background-color: #333;
+        }
+
+        #playPauseBtn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        #playPauseBtn:hover {
+            background-color: #ff3333;
+        }
+
+        /* Style for the QR code image */
+        #qrCode {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video plays in the background -->
+    <video autoplay muted loop>
+        <source src="boom.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Audio with multiple formats -->
+    <audio id="myAudio" loop>
+        <source src="ve.mp3" type="audio/mp3">
+        <source src="ve.ogg" type="audio/ogg">
+        <source src="ve.wav" type="audio/wav">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <!-- Content over the video -->
+    <h1>So, I know it's late but still wanna say Happy Rose Day, My Love ... i love u ...(orr merko yad tha hamesha rehta hai not like u last moment p yad aye )</h1>
+
+    <!-- Interlinked button -->
+    <div class="interlinked-button">
+        <a href="rose2.html">Click here for your rose...</a>
+    </div>
+
+    <!-- Play/Pause button -->
+    <button id="playPauseBtn" onclick="togglePlayPause()">Play</button>
+
+
+
+    <script>
+        function togglePlayPause() {
+            var audio = document.getElementById("myAudio");
+            var playPauseBtn = document.getElementById("playPauseBtn");
+
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = "Pause";
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = "Play";
+            }
+        }
+    </script>
+</body>
+</html>

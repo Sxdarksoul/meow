@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #000; /* Background color for the second page */
+            color: #fff; /* Text color for the second page */
+            font-family: 'Arial', sans-serif;
+        }
+
+        video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Adjust the glow effect here */
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .option-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Adjust the glow effect here */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #333; /* Darker shade on hover */
+            color: #fff;
+        }
+
+        #audioButton {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Adjust the glow effect here */
+            transition: background-color 0.3s ease;
+        }
+
+        #audioButton:hover {
+            background-color: #333; /* Darker shade on hover for audio button */
+        }
+    </style>
+</head>
+<body>
+    <!-- Video plays in the background -->
+    <video autoplay muted loop>
+        <source src="bum.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Semi-transparent overlay with text -->
+    <div class="overlay">
+        <h1>Mr. Meow, here is an offer for you...</h1>
+        <p>
+            As you know, ajkal kafi clashes chal rahey hai kafi kuch sab kuch ho chuka hai kafi had tak,
+            but let's start improving it. Pehle jaisa nai, pehle se bhi acha karna hai. Sab thode efforts
+            tum lagao thode mai bcz dono krengy toh hi hoga na...! So, will you help?
+(no dabane ka sochna bhi mat wese try kr sakty ho ... u can't do it ... i challenge u...
+        </p>
+
+        <!-- Option buttons -->
+        <div class="option-buttons">
+            <button id="yesButton" onclick="handleButtonClick('yes')">Yes</button>
+            <button id="noButton" onmouseover="startSwapping()" onmouseout="stopSwapping()" onclick="handleButtonClick('no')">No</button>
+        </div>
+    </div>
+
+    <!-- Audio button -->
+    <button id="audioButton" onclick="toggleAudio()">Audio</button>
+
+    <audio id="myAudio" loop>
+        <!-- MP3 format -->
+        <source src="ve.mp3" type="audio/mp3">
+        <!-- Ogg format -->
+        <source src="ve.ogg" type="audio/ogg">
+        <!-- WAV format -->
+        <source src="ve.wav" type="audio/wav">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <script>
+        var swappingInterval;
+
+        // JavaScript function to handle button click
+        function handleButtonClick(choice) {
+            if (choice === 'no') {
+                // If 'No' is clicked, change it to 'Yes'
+                document.getElementById('noButton').textContent = 'Yes';
+                document.getElementById('noButton').onclick = function () {
+                    // Handle 'Yes' button click
+                    alert('Great! Let\'s make things better together.');
+                    stopSwapping();
+                };
+            } else if (choice === 'yes') {
+                // Handle 'Yes' button click
+                alert('Great! Let\'s make things better together.');
+                stopSwapping();
+            }
+        }
+
+        // JavaScript function to start swapping
+        function startSwapping() {
+            swappingInterval = setInterval(function () {
+                // Swap 'Yes' and 'No' buttons
+                var tempText = document.getElementById('yesButton').textContent;
+                document.getElementById('yesButton').textContent = document.getElementById('noButton').textContent;
+                document.getElementById('noButton').textContent = tempText;
+            }, 500); // Adjust the interval as needed
+        }
+
+        // JavaScript function to stop swapping
+        function stopSwapping() {
+            clearInterval(swappingInterval);
+        }
+
+        // JavaScript function to toggle audio
+        function toggleAudio() {
+            var audio = document.getElementById('myAudio');
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+</body>
+</html>
